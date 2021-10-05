@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="lib (4)">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib" />
+      <root url="jar://$USER_HOME$/.ideaLibSources/hibernate-jpa-2.1-api-1.0.0.Final-sources.jar!/" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib" recursive="false" type="SOURCES" />
+  </library>
+</component>
