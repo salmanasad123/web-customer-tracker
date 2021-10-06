@@ -28,4 +28,9 @@ public class CustomerServiceImpl implements CustomerService {
         // delegate calls from our service to the customerDAO
         customerDAO.saveCustomer(theCustomer);
     }
+
+    @Override
+    public Customer getCustomer(int id) {
+        return customerDAO.getCustomer(id);
+    }
 }

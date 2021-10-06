@@ -9,4 +9,6 @@ public interface CustomerService {
     public List<Customer> getCustomers();
 
     void saveCustomer(Customer theCustomer);
+
+    Customer getCustomer(int id);
 }

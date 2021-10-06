@@ -6,10 +6,7 @@ import com.luv2code.springdemo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -58,5 +55,20 @@ public class CustomerController {
 
         // redirect back to customer list page (our dashboard / landing page)
         return "redirect:/customer/list";
+    }
+
+    // we are getting a customer id when we click on the form as request param
+    @RequestMapping("/showFormForUpdate")
+    public String showFormForUpdate(@RequestParam("customerId") int id, Model theModel) {
+
+        // make a database call to fetch the customer with the ID
+        Customer customer = customerService.getCustomer(id);
+
+        // set the customer as a model attribute to pre-populate the form
+        theModel.addAttribute("customer", customer);
+
+        // send over to the form along with the model so in the form we can access the Customer data in the model
+        return "customer-form";
+
     }
 }
