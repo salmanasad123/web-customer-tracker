@@ -21,7 +21,6 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     // @Transactional so spring will manage the transactions, we dont have to start and stop transactions
     @Override
-    @Transactional
     public List<Customer> getCustomers() {
 
         // create hibernate session

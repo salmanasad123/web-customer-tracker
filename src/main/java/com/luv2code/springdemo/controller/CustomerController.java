@@ -2,6 +2,7 @@ package com.luv2code.springdemo.controller;
 
 import com.luv2code.springdemo.dao.CustomerDAO;
 import com.luv2code.springdemo.entity.Customer;
+import com.luv2code.springdemo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,17 +15,18 @@ import java.util.List;
 @RequestMapping("/customer")
 public class CustomerController {
 
-    // need to inject the DAO into controller using dependency injection
-    // by using autowired spring will scan for the components that implement CustomerDAO interface
+    // need to inject the CustomerDAO into controller using dependency injection
+    // by using autowired spring will scan for the components that implement CustomerService interface
+    // and then create the instance and inject it here
     @Autowired
-    private CustomerDAO customerDAO;
+    private CustomerService customerService;
 
     // I only want to handle GET requests with this mapping
     @GetMapping("/list")
     public String listCustomers(Model theModel) {
 
         // get the customer from DAO
-        List<Customer> customers = customerDAO.getCustomers();
+        List<Customer> customers = customerService.getCustomers();
 
         // add customer to our model, we set attribute name and the value for attribute
         theModel.addAttribute("customers", customers);
