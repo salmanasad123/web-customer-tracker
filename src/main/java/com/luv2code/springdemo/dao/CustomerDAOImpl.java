@@ -71,5 +71,8 @@ public class CustomerDAOImpl implements CustomerDAO {
         Query<Customer> theQuery = session.createQuery("delete from Customer where id=:customerId");
         // setting the value for parameter :id
         theQuery.setParameter("customerId", id);
+
+        // execute the query
+        theQuery.executeUpdate();
     }
 }
