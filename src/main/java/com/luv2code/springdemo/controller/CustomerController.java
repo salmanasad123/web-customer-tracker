@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -33,5 +35,28 @@ public class CustomerController {
 
         // return the string that will be used for view
         return "list-customers";
+    }
+
+    @RequestMapping("/showFormForAdd")
+    public String showFormForAdd(Model theModel) {
+
+        // create model attribute to bind form data
+        Customer customer = new Customer();
+        theModel.addAttribute("customer", customer);
+
+        // when we return a string it will look for the appropriate jsp page in view configuration
+        return "customer-form";
+    }
+
+    // form when submitted from front-end will pass a model attribute so we receive it in our function of
+    // saveCustomer, we expect a model which will contain the form data so we expect a customer object
+    @PostMapping("/saveCustomer")
+    public String saveCustomer(@ModelAttribute("customer") Customer theCustomer) {
+
+        // save the customer using our service
+        customerService.saveCustomer(theCustomer);
+
+        // redirect back to customer list page (our dashboard / landing page)
+        return "redirect:/customer/list";
     }
 }
