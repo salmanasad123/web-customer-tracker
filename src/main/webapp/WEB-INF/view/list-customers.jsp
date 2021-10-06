@@ -47,9 +47,13 @@
             <!-- loop over and print our customers -->
             <c:forEach var="tempCustomer" items="${customers}">
 
-                <!-- construct an update link with customer id, we create a variable called updateLink
-                 so we can use it later in table data down below-->
+                <!-- construct an update link with customer id, we create a variable called updateLink and clicking
+                on this link will go to customer/showFormForUpdate so we can use it later in table data down below-->
                 <c:url var="updateLink" value="/customer/showFormForUpdate">
+                    <c:param name="customerId" value="${tempCustomer.id}"/>
+                </c:url>
+                <!-- construct a delete link !-->
+                <c:url var="deleteLink" value="/customer/delete">
                     <c:param name="customerId" value="${tempCustomer.id}"/>
                 </c:url>
 
@@ -60,6 +64,14 @@
                     <td>
                         <!-- display the update link ! and we use the variable we created above called updateLink-->
                         <a href="${updateLink}"> Update </a>
+                    </td>
+                    <td>
+                        <!-- display the delete link ! and we use the variable we created above called deleteLink
+                        we will add some javascript code to prompt the user with the delete dialog, if the user
+                        clicks cancel then we return false and id he press ok then we proceed with the delete link-->
+                        <a href="${deleteLink}"
+                           onclick="if (!(confirm('Are you sure you want to delete this customer?')))
+                               return false">Delete </a>
                     </td>
                 </tr>
 

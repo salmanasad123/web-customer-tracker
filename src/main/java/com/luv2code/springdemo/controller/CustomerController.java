@@ -5,6 +5,7 @@ import com.luv2code.springdemo.entity.Customer;
 import com.luv2code.springdemo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -70,6 +71,15 @@ public class CustomerController {
 
         // send over to the form along with the model so in the form we can access the Customer data in the model
         return "customer-form";
+    }
 
+    @RequestMapping("/delete")
+    public String deleteCustomer(@RequestParam("customerId") int id){
+
+        // make the database call using our service to delete customer with the id;
+        customerService.deleteCustomer(id);
+
+        // redirect back to customer list page (our dashboard / landing page) after deleting operation
+        return "redirect:/customer/list";
     }
 }
