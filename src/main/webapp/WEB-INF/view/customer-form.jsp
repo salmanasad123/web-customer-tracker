@@ -26,28 +26,35 @@
 <div id="container">
     <h3>Save Customer</h3>
 
+    <!-- spring will see if we have something in the model means values are not null in the model
+    so it will use getters and will pre-populate the form and if there is nothing in the model
+    nothing will be populated -->
     <form:form action="saveCustomer" modelAttribute="customer" method="POST">
 
+        <!-- need to associate this data with customer id ! we are setting a hidden form field
+        so when this form is loaded, they'll talk to customer object and say customer.getId(), place
+        it here in this hidden form field and when user will click submit it will call customer.setId()-->
+        <form:hidden path="id"/>
         <table>
             <tbody>
             <tr>
                 <td><label>First name:</label></td>
-                <td><form:input path="firstName" /></td>
+                <td><form:input path="firstName"/></td>
             </tr>
 
             <tr>
                 <td><label>Last name:</label></td>
-                <td><form:input path="lastName" /></td>
+                <td><form:input path="lastName"/></td>
             </tr>
 
             <tr>
                 <td><label>Email:</label></td>
-                <td><form:input path="email" /></td>
+                <td><form:input path="email"/></td>
             </tr>
 
             <tr>
                 <td><label></label></td>
-                <td><input type="submit" value="Save" class="save" /></td>
+                <td><input type="submit" value="Save" class="save"/></td>
             </tr>
 
 

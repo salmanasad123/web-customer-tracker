@@ -49,7 +49,7 @@
 
                 <!-- construct an update link with customer id, we create a variable called updateLink
                  so we can use it later in table data down below-->
-                <c:url var="updateLink" value="customer/showFormForUpdate">
+                <c:url var="updateLink" value="/customer/showFormForUpdate">
                     <c:param name="customerId" value="${tempCustomer.id}"/>
                 </c:url>
 

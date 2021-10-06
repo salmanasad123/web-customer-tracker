@@ -64,7 +64,8 @@ public class CustomerController {
         // make a database call to fetch the customer with the ID
         Customer customer = customerService.getCustomer(id);
 
-        // set the customer as a model attribute to pre-populate the form
+        // set the customer as a model attribute to pre-populate the form, it is the same attribute
+        // the form will use when it pre-populates the form data
         theModel.addAttribute("customer", customer);
 
         // send over to the form along with the model so in the form we can access the Customer data in the model
